@@ -97,8 +97,8 @@ module Dry
         end
 
         def initial_attributes
-          current_ability.attributes_for(@action_name, resource_class).delete_if do |key, _|
-            resource_params && resource_params.include?(key)
+          current_ability.attributes_for(@action_name, resource_class).delete_if do |key, value|
+            (resource_params && resource_params.include?(key)) || value.is_a?(Hash)
           end
         end
 
