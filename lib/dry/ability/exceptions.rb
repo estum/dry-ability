@@ -14,7 +14,7 @@ module Dry
 
       def initialize(message = nil, subject:, action:, candidates: NONE)
         @action, @subject = action, subject
-        message ||= format(DEFAULT_MESSAGE_TEMPLATE, subject, action, candidates)
+        message ||= format(DEFAULT_MESSAGE_TEMPLATE, subject.class, action, candidates)
         super(message)
       end
     end
@@ -28,7 +28,7 @@ module Dry
 
       def initialize(message = nil, action, subject)
         @action, @subject = action, subject
-        message ||= format(DEFAULT_MESSAGE_TEMPLATE, action, subject)
+        message ||= format(DEFAULT_MESSAGE_TEMPLATE, action, subject.class)
         super(message)
       end
     end
